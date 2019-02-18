@@ -45,7 +45,7 @@
           <div><strong>Question 1</strong></div>
           <label class="mr-sm-2" for="Q1">Your mind is always buzzing with unexplored ideas and plans.</label>
           <select class="custom-select mr-sm-2" id="Q1">
-            <option selected>Select an Option ...</option>
+            <option value="">Select an Option ...</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -61,7 +61,7 @@
           <label class="mr-sm-2" for="Q2">Generally speaking, you rely more on your experience than your
             imagination.</label>
           <select class="custom-select mr-sm-2" id="Q2">
-            <option selected>Select an Option ...</option>
+            <option value="">Select an Option ...</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -78,7 +78,7 @@
           <label class="mr-sm-2" for="Q3">You find it easy to stay relaxed and focused even when there is some
             pressure.</label>
           <select class="custom-select mr-sm-2" id="Q3">
-            <option selected>Select an Option ...</option>
+            <option value="">Select an Option ...</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -93,7 +93,7 @@
           <div><strong>Question 4</strong></div>
           <label class="mr-sm-2" for="Q4">You rarely do something just out of sheer curiosity.</label>
           <select class="custom-select mr-sm-2" id="Q4">
-            <option selected>Select an Option ...</option>
+            <option value="">Select an Option ...</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -109,7 +109,7 @@
           <div><strong>Question 5</strong></div>
           <label class="mr-sm-2" for="Q5">People can rarely upset you.</label>
           <select class="custom-select mr-sm-2" id="Q5">
-            <option selected>Select an Option ...</option>
+            <option value="">Select an Option ...</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -125,7 +125,7 @@
           <div><strong>Question 6</strong></div>
           <label class="mr-sm-2" for="Q6">It is often difficult for you to relate to other people’s feelings.</label>
           <select class="custom-select mr-sm-2" id="Q6">
-            <option selected>Select an Option ...</option>
+            <option value="">Select an Option ...</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -141,7 +141,7 @@
           <label class="mr-sm-2" for="Q7">In a discussion, truth should be more important than people’s
             sensitivities.</label>
           <select class="custom-select mr-sm-2" id="Q7">
-            <option selected>Select an Option ...</option>
+            <option value="">Select an Option ...</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -157,7 +157,7 @@
           <div><strong>Question 8</strong></div>
           <label class="mr-sm-2" for="Q8">You rarely get carried away by fantasies and ideas.</label>
           <select class="custom-select mr-sm-2" id="Q8">
-            <option selected>Select an Option ...</option>
+            <option value="">Select an Option ...</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -173,7 +173,7 @@
           <label class="mr-sm-2" for="Q9">You think that everyone’s views should be respected regardless of whether they
             are supported by facts or not.</label>
           <select class="custom-select mr-sm-2" id="Q9">
-            <option selected>Select an Option ...</option>
+            <option value="">Select an Option ...</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -188,8 +188,8 @@
         <div class="col-sm-5 col-md-5">
           <div><strong>Question 10</strong></div>
           <label class="mr-sm-2" for="Q10">You feel more energetic after spending time with a group of people.</label>
-          <select class="custom-select mr-sm-2" id="Q10">
-            <option selected>Select an Option ...</option>
+          <select class="custom-select mr-sm-2" id="Q10" required>
+            <option value="">Select an Option ...</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -250,6 +250,17 @@
   $(".submit").on("click", function (event) {
     event.preventDefault();
 
+
+    if($("#Q1").val() == "" || $("#Q2").val() == "" ||$("#Q3").val() == "" ||$("#Q4").val() == "" || $("#Q5").val() == ""  ){
+      alert("Please fill out all fields before submitting!");
+      return;
+    }
+    if($("#Q6").val() == "" || $("#Q7").val() == "" ||$("#Q8").val() == "" ||$("#Q9").val() == "" || $("#Q10").val() == ""  ){
+      alert("Please fill out all fields before submitting!");
+      return;
+    }
+
+
     var q1 = parseInt($("#Q1").val().trim());
     var q2 = parseInt($("#Q2").val().trim());
     var q3 = parseInt($("#Q3").val().trim());
@@ -260,6 +271,8 @@
     var q8 = parseInt($("#Q8").val().trim());
     var q9 = parseInt($("#Q9").val().trim());
     var q10 = parseInt($("#Q10").val().trim());
+
+
 
 
     // Here we grab the form elements
