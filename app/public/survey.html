@@ -231,15 +231,11 @@
     </div>
   </div>
 
-
-
   <footer class="footer">
     <div class="container">
       <p><a href="/api/friends">API Friends Link</a> | <a href="https://github.com/pmijar/FriendFinder">GitHub Repo</a>
     </div>
   </footer>
-
-
 
 </body>
 
@@ -249,8 +245,7 @@
 
   $(".submit").on("click", function (event) {
     event.preventDefault();
-
-
+    
     if($("#Q1").val() == "" || $("#Q2").val() == "" ||$("#Q3").val() == "" ||$("#Q4").val() == "" || $("#Q5").val() == ""  ){
       alert("Please fill out all fields before submitting!");
       return;
@@ -259,7 +254,6 @@
       alert("Please fill out all fields before submitting!");
       return;
     }
-
 
     var q1 = parseInt($("#Q1").val().trim());
     var q2 = parseInt($("#Q2").val().trim());
@@ -273,8 +267,6 @@
     var q10 = parseInt($("#Q10").val().trim());
 
 
-
-
     // Here we grab the form elements
     var newFriend = {
       name: $("#friendName").val().trim(),
@@ -286,15 +278,12 @@
 
     computeMatch(newFriend);
 
-    // This line is the magic. It"s very similar to the standard ajax function we used.
     // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
     // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
     // depending on if a tables is available or not.
 
     $.post("/api/friends", newFriend,
       function (data) {
-
-        //PM ::: CALL the FUNCTION that COMPUTES the MATCH and then DISPLAYS the MATCH WITH PICTURE
 
         // Clear the form when submitting
         $("#friendName").val("");
@@ -351,9 +340,11 @@
 
   function displayMatch(friendsObj) {
 
+    $('#matchImage').empty();
+    
     $('#matchName').text(friendsObj.name)
-
     var img = $('<img>');
+    img.addClass("img-thumbnail");
     img.attr('src', friendsObj.photo);
     img.appendTo('#matchImage');
 
